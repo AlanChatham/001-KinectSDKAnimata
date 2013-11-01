@@ -1,4 +1,16 @@
-﻿
+﻿/*
+ * KinectOSC
+ * Copyright 2013 - Alan Chatham
+ * Extended from the work of Andre Hayter
+ * 
+ * This code reads two Microsoft Kinect sensors and outputs skeleton data over OSC
+ * in a format that Animata can readily use.
+ *
+ *  This code is released to the public under the GNU Public License, version 3
+ *  The full licence can be read in the included gpl-3.0.txt file, or at
+ *  http://www.gnu.org/licenses/gpl-3.0.txt
+ */
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -448,6 +460,8 @@ namespace KinectOSC
             Skeleton[] skeletons = new Skeleton[0];
 
             using (SkeletonFrame skeletonFrame = e.OpenSkeletonFrame()) {
+                //Console.WriteLine("SkeletonFrame from Kinect 0!!! " + skeletonFrame.SkeletonArrayLength + " skeletons in teh scene");
+            
                 if (skeletonFrame != null)  {
                     skeletons = new Skeleton[skeletonFrame.SkeletonArrayLength];
                     skeletonFrame.CopySkeletonDataTo(skeletons);
